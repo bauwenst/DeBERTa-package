@@ -41,11 +41,5 @@ dependencies = [
     "torch"
 ]
 
-[project.optional-dependencies]
-github = [
-    "tktkt[github] @ git+https://github.com/bauwenst/TkTkT",
-    "fiject        @ git+https://github.com/bauwenst/fiject"
-]
-
 [project.urls]
 Repository = "https://github.com/microsoft/DeBERTa"
