@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deberta"
+version = "0.1.13"
+description = "DeBERTa: Decoding enhanced BERT with Disentangled Attention"
+keywords = ["NLP", "deep learning", "transformer", "pytorch", "Attention", "BERT", "RoBERTa", "DeBERTa"]
+
+requires-python = ">= 3.6"
+authors = [
+  {name = "penhe", email = "penhe@microsoft.com"}
+]
+maintainers = []
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "nltk",
+    "spacy",
+    "numpy",
+    "pytest",
+    "regex",
+    "scipy",
+    "sklearn",
+    "tqdm",
+    "ujson",
+    "seqeval",
+    "psutil",
+    "sentencepiece",
+    "torch"
+]
+
+[project.optional-dependencies]
+github = [
+    "tktkt[github] @ git+https://github.com/bauwenst/TkTkT",
+    "fiject        @ git+https://github.com/bauwenst/fiject"
+]
+
+[project.urls]
+Repository = "https://github.com/microsoft/DeBERTa"

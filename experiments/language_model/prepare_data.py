@@ -1,5 +1,5 @@
 # coding: utf-8
-from DeBERTa import deberta
+from deberta import deberta
 import sys
 import argparse
 from tqdm import tqdm

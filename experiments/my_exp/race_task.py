@@ -19,14 +19,14 @@ import random
 import torch
 import re
 import ujson as json
-from DeBERTa.apps.tasks.metrics import *
-from DeBERTa.apps.tasks import EvalData, Task,register_task
-from DeBERTa.utils import xtqdm as tqdm
-from DeBERTa.data import ExampleInstance, ExampleSet, DynamicDataset,example_to_feature
-from DeBERTa.data.example import *
-from DeBERTa.utils import get_logger
-from DeBERTa.data.example import _truncate_segments
-from DeBERTa.apps.models.multi_choice import MultiChoiceModel
+from deberta.apps.tasks.metrics import *
+from deberta.apps.tasks import EvalData, Task,register_task
+from deberta.utils import xtqdm as tqdm
+from deberta.data import ExampleInstance, ExampleSet, DynamicDataset,example_to_feature
+from deberta.data.example import *
+from deberta.utils import get_logger
+from deberta.data.example import _truncate_segments
+from deberta.apps.models.multi_choice import MultiChoiceModel
 
 logger=get_logger()
 
