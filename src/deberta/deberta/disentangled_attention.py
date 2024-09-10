@@ -37,7 +37,8 @@ class DisentangledSelfAttention(nn.Module):
         self.value_proj = nn.Linear(config.hidden_size, self.all_head_size, bias=True)
 
         self.share_att_key = getattr(config, 'share_att_key', False)
-        self.pos_att_type = [x.strip() for x in getattr(config, 'pos_att_type', 'c2p').lower().split('|')] # c2p|p2c
+        pos_att_type = getattr(config, 'pos_att_type', 'c2p')  # Can look like "c2p | p2c".
+        self.pos_att_type = [x.strip() for x in pos_att_type.lower().split('|')] if isinstance(pos_att_type, str) else pos_att_type
         self.relative_attention = getattr(config, 'relative_attention', False)
 
         if self.relative_attention:
