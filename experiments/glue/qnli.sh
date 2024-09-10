@@ -91,7 +91,7 @@ case ${init,,} in
 		;;
 esac
 
-python -m DeBERTa.apps.run --model_config config.json  \
+python -m src.deberta.apps.run --model_config config.json  \
 	--tag $tag \
 	--task_name $Task \
 	--data_dir $cache_dir/glue_tasks/$Task \

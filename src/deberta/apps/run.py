@@ -351,7 +351,7 @@ def build_argument_parser():
             action=LoadTaskAction,
             required=True,
             help="The name of the task to train. To list all registered tasks, use \"*\" as the name, e.g. \n"
-            "\npython -m DeBERTa.apps.run --task_name \"*\" --help")
+            "\npython -m src.deberta.apps.run --task_name \"*\" --help")
 
   parser.add_argument("--data_dir",
             default=None,

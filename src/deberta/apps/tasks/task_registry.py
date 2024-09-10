@@ -52,7 +52,7 @@ def load_tasks(task_dir = None):
   for t in sys_tasks:
     m = os.path.splitext(os.path.basename(t))[0]
     if not m.startswith('_'):
-      importlib.import_module(f'DeBERTa.apps.tasks.{m}')
+      importlib.import_module(f'src.deberta.apps.tasks.{m}')
 
   if task_dir:
     assert os.path.exists(task_dir), f"{task_dir} must be a valid directory."

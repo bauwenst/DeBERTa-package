@@ -181,7 +181,7 @@ case ${init,,} in
 esac
 
 export MASTER_PORT=12456
-python -m DeBERTa.apps.run --model_config config.json  \
+python -m src.deberta.apps.run --model_config config.json  \
 	--tag $tag \
 	--do_train \
 	--max_seq_len 256 \

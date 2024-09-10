@@ -93,7 +93,7 @@ case ${init,,} in
 		;;
 esac
 
-python  -W ignore  -m DeBERTa.apps.run --model_config config.json  \
+python  -W ignore  -m src.deberta.apps.run --model_config config.json  \
 	--tag $tag \
 	--do_train \
 	--task_dir . \

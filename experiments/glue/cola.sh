@@ -79,7 +79,7 @@ case ${init,,} in
 		;;
 esac
 
-python -m DeBERTa.apps.run --model_config config.json  \
+python -m src.deberta.apps.run --model_config config.json  \
 	--do_train \
 	--tag $tag \
 	--max_seq_len 64 \

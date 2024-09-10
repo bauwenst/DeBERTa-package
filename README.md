@@ -167,7 +167,7 @@ cd experiments/glue
 task=STS-B 
 OUTPUT=/tmp/DeBERTa/exps/$task
 export OMP_NUM_THREADS=1
-python3 -m DeBERTa.apps.run --task_name $task --do_train  \
+python3 -m src.deberta.apps.run --task_name $task --do_train  \
   --data_dir $cache_dir/glue_tasks/$task \
   --eval_batch_size 128 \
   --predict_batch_size 128 \
