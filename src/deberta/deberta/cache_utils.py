@@ -6,19 +6,24 @@
 # Author: penhe@microsoft.com
 # Date: 05/15/2020
 #
+from pathlib import Path
 
+import os
 import pdb
 import torch
-import os
 import requests
-from .config import ModelConfig
-import pathlib
-from ..utils import xtqdm as tqdm
 from zipfile import ZipFile
+
+from .config import ModelConfig
+from ..utils import xtqdm as tqdm
 from ..utils import get_logger
 logger = get_logger()
 
 __all__ = ['pretrained_models', 'load_model_state', 'load_vocab']
+
+
+DEFAULT_CACHE = Path(os.environ["HF_HOME"]) / "hub" / "deberta" if "HF_HOME" in os.environ else Path.home() / ".~DeBERTa"
+
 
 class PretrainedModel:
   def __init__(self, name, vocab, vocab_type, model='pytorch_model.bin', config='config.json', **kwargs):
@@ -53,7 +58,7 @@ def download_asset(url, name, tag=None, no_cache=False, cache_dir=None):
   if _tag is None:
     _tag = 'latest'
   if not cache_dir:
-    cache_dir = os.path.join(pathlib.Path.home(), f'.~DeBERTa/assets/{_tag}/')
+    cache_dir = os.path.join(DEFAULT_CACHE, f'assets/{_tag}/')
   os.makedirs(cache_dir, exist_ok=True)
   output=os.path.join(cache_dir, name)
   if os.path.exists(output) and (not no_cache):
@@ -87,7 +92,7 @@ def load_model_state(path_or_pretrained_id, tag=None, no_cache=False, cache_dir=
     if _tag is None:
       _tag = 'latest'
     if not cache_dir:
-      cache_dir = os.path.join(pathlib.Path.home(), f'.~DeBERTa/assets/{_tag}/{pretrained.name}')
+      cache_dir = os.path.join(DEFAULT_CACHE, f'assets/{_tag}/{pretrained.name}')
     os.makedirs(cache_dir, exist_ok=True)
     model_path = os.path.join(cache_dir, 'pytorch_model.bin')
     if (not os.path.exists(model_path)) or no_cache:
@@ -115,7 +120,7 @@ def load_vocab(vocab_path=None, vocab_type=None, pretrained_id=None, tag=None, n
 
     pretrained = pretrained_models[pretrained_id.lower()]
     if not cache_dir:
-      cache_dir = os.path.join(pathlib.Path.home(), f'.~DeBERTa/assets/{_tag}/{pretrained.name}')
+      cache_dir = os.path.join(DEFAULT_CACHE, f'assets/{_tag}/{pretrained.name}')
     os.makedirs(cache_dir, exist_ok=True)
     vocab_type = pretrained.vocab_type
     url = pretrained.vocab_url
